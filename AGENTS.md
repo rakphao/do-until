@@ -6,7 +6,7 @@ Instructions for coding agents working in this repository.
 
 Portable Stop-hook loop plugin for Grok Build TUI and Claude Code. Node.js ESM (`.mjs`), no build step.
 
-Domain language and roadmap: see [CONTEXT.md](CONTEXT.md).
+Domain language and roadmap: [CONTEXT.md](CONTEXT.md).
 
 ## Validate
 
@@ -15,19 +15,13 @@ grok plugin validate .
 node scripts/setup-loop.mjs --help
 ```
 
-## Development workflow
-
-1. Edit in this repo (dev tree).
-2. Install or refresh runtime separately — **do not symlink this repo into `~/.grok/plugins/`**. A broken dev tree must not take down plugins in other projects.
-3. Test locally:
+## Development
 
 ```bash
 grok plugin install . --trust
-# after changes to hooks/commands:
-# reload plugins in Grok (/plugins → reload)
 ```
 
-4. Push to GitHub; users install via `npx github:rakphao/do-until` or `grok plugin install https://github.com/rakphao/do-until --trust`.
+Reload plugins in Grok after changing hooks or commands (`/plugins` → reload).
 
 ## Layout
 
@@ -41,17 +35,11 @@ grok plugin install . --trust
 
 ## Conventions
 
-- Plugin-facing strings: **English** (see CONTEXT.md — Primary Language).
-- State file shape: `.grok/do-until.local.md` — do not rename without updating hooks and scripts.
-- Transcript parser must support Grok (`type:assistant`) and Claude (`role:assistant`).
-- Bump `.claude-plugin/plugin.json` version when releasing.
+- Plugin-facing strings: **English** (see CONTEXT.md).
+- State file: `.grok/do-until.local.md` — keep hooks and scripts in sync if the shape changes.
+- Transcript parser: Grok (`type:assistant`) and Claude (`role:assistant`).
+- Bump version in `.claude-plugin/plugin.json` when releasing.
 
 ## Do not commit
 
-- `.grok/do-until.local.md` (loop runtime state)
-- Machine-specific paths (`~/Projects/...`, personal harness notes)
-- Competitive comparisons with other plugins in user-facing docs
-
-## Docs gate (before push)
-
-Skim all `*.md` in the repo: README, README.th, CONTEXT, AGENTS, `commands/`. No personal paths, no unpublished internal notes, no trash-talk.
+- `.grok/do-until.local.md` (active loop state)

@@ -35,7 +35,7 @@ Inspired by the [Ralph Wiggum technique](https://github.com/anthropics/claude-pl
 npx github:rakphao/do-until
 ```
 
-This runs `grok plugin install`, enables the plugin in `~/.grok/config.toml`, and prints next steps.
+This runs `grok plugin install`, enables the plugin in your Grok config, and prints next steps.
 
 **Manual install:**
 
@@ -43,7 +43,7 @@ This runs `grok plugin install`, enables the plugin in `~/.grok/config.toml`, an
 grok plugin install https://github.com/rakphao/do-until --trust
 ```
 
-Enable in `~/.grok/config.toml`:
+Enable in your Grok config:
 
 ```toml
 [plugins]
@@ -88,10 +88,6 @@ grok plugin install . --trust
 ```
 
 Edit, validate (`grok plugin validate .`), then reload plugins in Grok (`/plugins` → reload).
-
-Keep the **dev repo separate from runtime** — do not symlink the working tree into `~/.grok/plugins/`. If the dev copy breaks, other projects should keep using a stable install from GitHub.
-
-Agent instructions: [AGENTS.md](AGENTS.md). Domain terms: [CONTEXT.md](CONTEXT.md).
 
 ## Roadmap
 

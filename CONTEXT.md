@@ -66,15 +66,10 @@ _Avoid_: i18n framework (for v1), bilingual commands
 
 **Upstream Repository**:
 https://github.com/rakphao/do-until — source of truth for development and releases.
-_Avoid_: ~/.grok/plugins (as dev workspace), runtime path (as git root)
 
-**Dev Repository**:
-A local git clone used for editing, commits, and PRs. Separate from the runtime install path.
-_Avoid_: developing in-place inside runtime, home folder repo
-
-**Runtime Install**:
-The copy Grok/Claude Code loads at session start (via `grok plugin install` or `npx` installer). Separate from the dev git clone — not edited directly, not symlinked from the dev tree (a broken dev copy must not break other projects).
-_Avoid_: source tree, dev repo, dev-to-runtime symlink
+**Installed Copy**:
+The plugin tree loaded by the agent CLI after `grok plugin install` or the npx installer.
+_Avoid_: editing the installed copy in place instead of this repository
 
 **Supported Platform** (v1):
 Grok Build TUI and Claude Code — shared plugin format (commands, hooks, skills). Primary OSS targets for initial release.
