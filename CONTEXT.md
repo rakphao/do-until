@@ -73,8 +73,8 @@ A local git clone used for editing, commits, and PRs. Separate from the runtime 
 _Avoid_: developing in-place inside runtime, home folder repo
 
 **Runtime Install**:
-The copy or symlink Grok/Claude Code loads at session start (e.g. `~/.grok/plugins/do-until`). Updated via symlink, `grok plugin install`, or release checkout — not edited directly.
-_Avoid_: source tree, dev repo
+The copy Grok/Claude Code loads at session start (via `grok plugin install` or `npx` installer). Separate from the dev git clone — not edited directly, not symlinked from the dev tree (a broken dev copy must not break other projects).
+_Avoid_: source tree, dev repo, dev-to-runtime symlink
 
 **Supported Platform** (v1):
 Grok Build TUI and Claude Code — shared plugin format (commands, hooks, skills). Primary OSS targets for initial release.

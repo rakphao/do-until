@@ -46,15 +46,12 @@ enabled = ["do-until"]
 ```bash
 git clone https://github.com/rakphao/do-until.git
 cd do-until
-node scripts/install.mjs --local
-```
-
-หรือ symlink สำหรับ dev:
-
-```bash
-ln -sfn "$(pwd)" ~/.grok/plugins/do-until
 grok plugin install . --trust
 ```
+
+แยก dev repo จาก runtime — **อย่า symlink** working tree เข้า `~/.grok/plugins/` เพราะถ้า dev พัง จะกระทบโปรเจกต์อื่น
+
+ดู [AGENTS.md](AGENTS.md) และ [CONTEXT.md](CONTEXT.md)
 
 ## แผน release
 

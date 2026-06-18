@@ -84,19 +84,14 @@ Scripts are **Node.js** (`.mjs`) for cross-platform support on macOS, Linux, and
 ```bash
 git clone https://github.com/rakphao/do-until.git
 cd do-until
-node scripts/install.mjs --local   # install from working tree
-```
-
-Or symlink for live reload during development:
-
-```bash
-git clone https://github.com/rakphao/do-until.git
-cd do-until
-ln -sfn "$(pwd)" ~/.grok/plugins/do-until   # macOS/Linux
 grok plugin install . --trust
 ```
 
-Edit the repo, commit, push. Reload plugins in Grok to pick up hook/command changes.
+Edit, validate (`grok plugin validate .`), then reload plugins in Grok (`/plugins` → reload).
+
+Keep the **dev repo separate from runtime** — do not symlink the working tree into `~/.grok/plugins/`. If the dev copy breaks, other projects should keep using a stable install from GitHub.
+
+Agent instructions: [AGENTS.md](AGENTS.md). Domain terms: [CONTEXT.md](CONTEXT.md).
 
 ## Roadmap
 
