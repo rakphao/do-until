@@ -1,6 +1,6 @@
 {
   "name": "do-until",
-  "version": "0.1.2",
+  "version": "0.3.0",
   "description": "Portable autonomous loop plugin for Grok Build TUI and Claude Code",
   "type": "module",
   "bin": "./scripts/install.mjs",
@@ -9,6 +9,7 @@
     "scripts/run.mjs",
     "scripts/run.cmd",
     "scripts/run.ps1",
+    "scripts/plan.mjs",
     "lib",
     ".claude-plugin",
     "commands",
@@ -23,5 +24,8 @@
     "type": "git",
     "url": "https://github.com/rakphao/do-until.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.mjs"
+  }
 }

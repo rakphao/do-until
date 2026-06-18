@@ -13,6 +13,7 @@ Domain language and roadmap: [CONTEXT.md](CONTEXT.md).
 ```bash
 grok plugin validate .
 node scripts/run.mjs setup --help
+npm test
 ```
 
 Windows (cmd or PowerShell): `node scripts/run.mjs setup --help` — or `scripts\run.cmd` / `scripts\run.ps1`.
@@ -33,14 +34,14 @@ Reload plugins in Grok after changing hooks or commands (`/plugins` → reload).
 |------|------|
 | `commands/` | Slash command definitions |
 | `hooks/` | Stop hook (`stop-hook.mjs`) |
-| `scripts/` | Setup, cancel, installer |
-| `lib/` | State + transcript parsing |
+| `scripts/` | Setup, cancel, plan, installer (run.mjs is the cross-platform dispatcher) |
+| `lib/` | State + spec + transcript parsing |
 | `.claude-plugin/plugin.json` | Plugin manifest |
 
 ## Conventions
 
 - Plugin-facing strings: **English** (see CONTEXT.md).
-- State file: `.grok/do-until.local.md` — keep hooks and scripts in sync if the shape changes.
+- State file: `.grok/do-until.local.md` (execution) and `.grok/do-until.spec.md` (planning output) — keep hooks/scripts in sync on format changes.
 - Transcript parser: Grok (`type:assistant`) and Claude (`role:assistant`).
 - Bump version in `.claude-plugin/plugin.json` when releasing.
 

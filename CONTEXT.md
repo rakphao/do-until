@@ -21,7 +21,7 @@ A discrete unit of work within a loop (e.g. one task from a plan) tracked in loo
 _Avoid_: Task (generic), step (ambiguous)
 
 **Loop Spec**:
-The plan artifact at `.grok/do-until.spec.md` produced by Planning Session. Fields: objective, deliverables (id, title, status), verify_command, completion_promise, max_iterations, blocked_policy, constraints, confirmed. Consumed by Execution Loop after Confirmation Gate.
+The plan artifact at `.grok/do-until.spec.md` produced by Planning Session. Fields: objective, deliverables (id, title, status), verify_command, completion_promise, max_iterations, constraints, confirmed. Consumed by Execution Loop after Confirmation Gate.
 _Avoid_: plan.md (when referring to the runtime contract), prompt (ambiguous)
 
 **Verify Command**:
@@ -29,8 +29,13 @@ The shell gate run before marking a deliverable complete (e.g. `pnpm test && pnp
 _Avoid_: test command (generic), CI (when meaning local gate)
 
 **Blocked Policy**:
-What Execution Loop does when the agent is truly stuck. v1 default: stop the loop and log — not ask the developer mid-loop.
-_Avoid_: escalation (ambiguous), human-in-the-loop (during execution)
+Intentionally not implemented in this plugin.
+
+The design philosophy is to let the agent continue improvising with best-effort heuristics as long as it does not cause damage (e.g. the loop only stops on explicit completion conditions: completion promise, all deliverables verified, max iterations, or explicit cancel).
+
+This aligns with favoring agent autonomy over frequent human intervention for "stuck" states. Native agent platforms (such as Claude Code's /goal) already surface "blocked on you" when real human input is required.
+
+See user guidance: prefer "keep going with best heuristic" over building stop-and-wait behavior into the portable loop.
 
 **Planning Session**:
 An interactive, human-in-the-loop interview (one question at a time) that produces a Loop Spec and requires explicit developer confirmation before execution starts.
@@ -53,8 +58,8 @@ do-until — chosen for clarity-first naming. Slash commands and repo name match
 _Avoid_: charter, pact (rejected alternatives), clever names (deferred)
 
 **Release Strategy**:
-Phased OSS publish — v0.1 (current plugin + docs), v0.2 (do-until-plan + Loop Spec), v0.3 (deliverable loop + pause/resume).
-_Avoid_: big-bang release, v1.0 day one
+Phased OSS publish up to v0.3 (deliverable loop + pause/resume). v0.3 is the final major version. Subsequent work is limited to fine-tuning and maintenance.
+_Avoid_: big-bang release, v1.0 day one, scope creep beyond portable stop-hook loop.
 
 **Primary Language**:
 English for all plugin surfaces — command descriptions, script output, hook messages, and the main README.

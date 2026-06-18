@@ -53,6 +53,6 @@ grok plugin install . --trust
 
 - **v0.1** — loop ปัจจุบัน + docs
 - **v0.2** — `/do-until-plan`, Loop Spec, Confirmation Gate
-- **v0.3** — deliverable loop, verify gate, pause/resume
+- **v0.3** — deliverable-by-deliverable loop + verify gate + pause/resume (final major version)
 
-เอกสารภาษาอังกฤษฉบับเต็ม: [README.md](README.md)
+งานต่อไปจะเป็น fine-tuning และ maintenance เท่านั้น ไม่มี major feature ใหม่ เอกสารภาษาอังกฤษฉบับเต็ม: [README.md](README.md)

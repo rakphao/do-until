@@ -8,13 +8,14 @@ const TARGETS = {
   stop: ["hooks", "stop-hook.mjs"],
   setup: ["scripts", "setup-loop.mjs"],
   cancel: ["scripts", "cancel-loop.mjs"],
+  plan: ["scripts", "plan.mjs"],
 };
 
 const command = process.argv[2];
 const segments = TARGETS[command];
 
 if (!segments) {
-  console.error(`do-until: unknown command "${command ?? ""}". Expected: stop, setup, cancel`);
+  console.error(`do-until: unknown command "${command ?? ""}". Expected: stop, setup, cancel, plan`);
   process.exit(1);
 }
 
