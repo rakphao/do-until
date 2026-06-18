@@ -1,0 +1,5 @@
+.DS_Store
+*.tmp
+.grok/do-until.local.md
+.grok/do-until.spec.md
+.claude/do-until.local.md
