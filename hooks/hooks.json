@@ -6,12 +6,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${GROK_PLUGIN_ROOT}/hooks/stop-hook.mjs\"",
+            "command": "node \"${GROK_PLUGIN_ROOT}/scripts/run.mjs\" stop",
             "timeout": 10
           },
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/stop-hook.mjs\"",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/run.mjs\" stop",
             "timeout": 10
           }
         ]

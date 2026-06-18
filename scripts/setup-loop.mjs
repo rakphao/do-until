@@ -19,8 +19,9 @@ STOP:
   /cancel-do-until
 
 MONITOR:
-  type .grok\\do-until.local.md   (Windows)
-  cat .grok/do-until.local.md    (macOS/Linux)
+  Get-Content .grok\\do-until.local.md -Head 10   (PowerShell)
+  type .grok\\do-until.local.md                   (cmd)
+  cat .grok/do-until.local.md                     (macOS/Linux)
 `;
 
 function parseArgs(argv) {

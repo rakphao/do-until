@@ -77,7 +77,7 @@ grok plugin install . --trust
    - `/cancel-do-until` is run
    - state file is removed or corrupted
 
-Scripts are **Node.js** (`.mjs`) for cross-platform support on macOS, Linux, and Windows.
+Scripts are **Node.js** (`.mjs`) with `scripts/run.mjs` entry points. Works on macOS, Linux, Windows (cmd and PowerShell). Requires Node.js 18+ on PATH.
 
 ## Development
 

@@ -1,6 +1,6 @@
 {
   "name": "do-until",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Work on a task until done — portable autonomous loop for Grok Build TUI and Claude Code",
   "author": {
     "name": "rakphao"

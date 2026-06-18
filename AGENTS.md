@@ -12,14 +12,18 @@ Domain language and roadmap: [CONTEXT.md](CONTEXT.md).
 
 ```bash
 grok plugin validate .
-node scripts/setup-loop.mjs --help
+node scripts/run.mjs setup --help
 ```
+
+Windows (cmd or PowerShell): `node scripts/run.mjs setup --help` — or `scripts\run.cmd` / `scripts\run.ps1`.
 
 ## Development
 
 ```bash
 grok plugin install . --trust
 ```
+
+Hooks and slash commands invoke `scripts/run.mjs` (Node). Use forward slashes in plugin paths. Requires Node.js 18+ on PATH.
 
 Reload plugins in Grok after changing hooks or commands (`/plugins` → reload).
 

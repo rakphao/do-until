@@ -11,13 +11,18 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const LOCAL_SOURCE = path.resolve(__dirname, "..");
 
 function commandExists(name) {
-  const check = process.platform === "win32" ? "where" : "which";
-  const result = spawnSync(check, [name], { encoding: "utf8" });
+  const check = process.platform === "win32" ? "where.exe" : "which";
+  const result = spawnSync(check, [name], { encoding: "utf8", windowsHide: true });
   return result.status === 0;
 }
 
 function run(command, args) {
-  const result = spawnSync(command, args, { stdio: "inherit", encoding: "utf8" });
+  const result = spawnSync(command, args, {
+    stdio: "inherit",
+    encoding: "utf8",
+    windowsHide: true,
+    shell: process.platform === "win32",
+  });
   if (result.status !== 0) {
     process.exit(result.status ?? 1);
   }
@@ -93,7 +98,7 @@ Then run:
 Done.
 
 1. Restart Grok or run /plugins → reload
-2. Verify: grok inspect | rg do-until
+2. Verify: grok plugin list
 3. Start a loop: /do-until "your task" --max-iterations 20
 
 Cancel anytime: /cancel-do-until`);

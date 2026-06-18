@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
-import { extractPromiseText, readState, removeState, writeState } from "../lib/state.mjs";
+import { normalizePath } from "../lib/paths.mjs";
+import { extractPromiseText, readState, removeState } from "../lib/state.mjs";
 import { lastAssistantText } from "../lib/transcript.mjs";
 
 function readStdin() {
@@ -53,7 +54,7 @@ if (maxIterations > 0 && iteration >= maxIterations) {
   process.exit(0);
 }
 
-const transcriptPath = hookInput.transcript_path || hookInput.transcriptPath || "";
+const transcriptPath = normalizePath(hookInput.transcript_path || hookInput.transcriptPath || "");
 if (!transcriptPath || !fs.existsSync(transcriptPath)) {
   fail("do-until: transcript not found, stopping loop", filePath);
 }
@@ -77,7 +78,7 @@ if (!body) {
 }
 
 const nextIteration = iteration + 1;
-const updatedRaw = state.raw.replace(/^iteration: .*$/m, `iteration: ${nextIteration}`);
+const updatedRaw = state.raw.replace(/^iteration: .*(\r?\n)/m, `iteration: ${nextIteration}$1`);
 fs.writeFileSync(filePath, updatedRaw, "utf8");
 
 const systemMessage =

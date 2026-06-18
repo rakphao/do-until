@@ -1,10 +1,10 @@
 ---
 description: "Cancel the active do-until loop"
-allowed-tools: ["Bash(node ${GROK_PLUGIN_ROOT}/scripts/cancel-loop.mjs:*)", "Bash(node ${CLAUDE_PLUGIN_ROOT}/scripts/cancel-loop.mjs:*)"]
+allowed-tools: ["Bash(node *run.mjs cancel*:*)", "Bash(node *cancel-loop.mjs*:*)", "Read"]
 ---
 
 Run the cancel script and report the result:
 
 ```!
-node "${GROK_PLUGIN_ROOT}/scripts/cancel-loop.mjs"
+node "${GROK_PLUGIN_ROOT}/scripts/run.mjs" cancel
 ```
